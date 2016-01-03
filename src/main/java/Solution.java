@@ -1,14 +1,14 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Matt on 11/28/2015.
  */
 public interface Solution<S, T> {
 
-  S readInput()
+  S parseInput(List<String> input);
   
   T process(S input);
+
+  String formatOutput(T output);
 }
