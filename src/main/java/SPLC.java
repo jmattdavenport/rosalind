@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Matt on 12/6/2015.
  */
-public class SPLCOld {
+public class SPLC {
 
   public static void main(String[] args) throws IOException {
     String className = new Object() {
