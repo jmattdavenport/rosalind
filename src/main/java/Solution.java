@@ -6,6 +6,9 @@ import java.util.Scanner;
 /**
  * Created by Matt on 11/28/2015.
  */
-public class Child extends Base {
+public interface Solution<S, T> {
 
+  S readInput()
+  
+  T process(S input);
 }
