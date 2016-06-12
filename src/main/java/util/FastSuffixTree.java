@@ -1,3 +1,5 @@
+package util;
+
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Multimap;
@@ -9,30 +11,19 @@ import java.util.stream.IntStream;
 /**
  * Created by matt on 1/3/2016.
  */
-public class SuffixTree {
+public class FastSuffixTree {
 
   private static final int INFINITY = Integer.MAX_VALUE / 2;
 
-  private final String input;
   private final Node root;
   private final Node dummy;
   private final Set<Node> leaves = new HashSet<>();
   private final Set<Node> currentWordLeaves = new HashSet<>();
   private final Multimap<Node, Integer> relatedInputs = HashMultimap.create();
-  private final List<Character> separators;
 
-  public SuffixTree(Collection<String> strings) {
-    SeparatorSelector separatorSelector = new SeparatorSelector(strings);
-    separators = separatorSelector.getSeparators();
-    StringBuilder combinedString = new StringBuilder();
-    int separatorNum = 0;
-    for (String s : strings) {
-      combinedString.append(s);
-      combinedString.append(separators.get(separatorNum++));
-    }
+  private String input;
 
-    input = combinedString.toString();
-
+  public FastSuffixTree(Collection<String> strings) {
     dummy = new Node(null) {
       @Override
       public ReferencePair getChild(char a) {
@@ -56,7 +47,7 @@ public class SuffixTree {
     }
   }
 
-//  public SuffixTree(String input) {
+//  public util.FastSuffixTree(String input) {
 //    this.input = input;
 //
 //    dummy = new Node(null) {
@@ -260,7 +251,7 @@ public class SuffixTree {
   }
 
   public static void main(String[] args) {
-    SuffixTree tree = new SuffixTree(ImmutableList.of("cacao", "cat"));
+    FastSuffixTree tree = new FastSuffixTree(ImmutableList.of("cacao", "cat"));
     System.out.println(tree.toString());
   }
 }
