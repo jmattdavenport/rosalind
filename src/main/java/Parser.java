@@ -5,6 +5,11 @@ import java.util.Map;
  * Created by matt on 1/3/2016.
  */
 public class Parser {
+  /**
+   * Parses the FASTA format and returns results in a map from name to value
+   * @param input lines of a file in FASTA format
+   * @return a map from name to value
+   */
   public static Map<String, String> parseFasta(Iterable<String> input) {
     Map<String, String> annotatedStrings = new LinkedHashMap<>();
     StringBuilder currentString = null;
